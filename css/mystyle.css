@@ -34,10 +34,17 @@
 
 .home-six-style .hero-section {
 	background: #f2f7f8;
-	padding-top: 70px;
+	padding-top: 20px;
 }
 
 .home-six-style .header-section {
     position: relative;
     background: #f2f7f8;
+    padding: 50px 80px;
+    padding-bottom: 20px;
+}
+
+.home-six-style .hero-section .my-image-profile {
+    /* height: 500px auto; */
+    /* width: 500px auto; */
 }
