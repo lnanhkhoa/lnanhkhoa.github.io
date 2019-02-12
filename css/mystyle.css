@@ -1,0 +1,43 @@
+
+/* =================================
+------------------------------------
+  CV Resume - lnanhkhoa
+  Version: 1.0
+ ------------------------------------ 
+ ====================================*/
+
+/*----------------------------------------*/
+/* Template customize CSS
+/*----------------------------------------*/
+
+
+.home-six-style .site-logo h2 a,
+.home-six-style .site-logo p,
+.home-six-style .hero-text h2,
+.home-six-style .hero-text p,
+.home-six-style .social-links a {
+    color: #40424a;
+}
+
+.info-section {
+	background: #363944;
+	padding: 60px 0;
+}
+
+.info-section .hero-info ul li {
+    color: rgb(194, 194, 189);
+}
+.info-section .hero-info ul li span {
+    color: white;
+}
+
+
+.home-six-style .hero-section {
+	background: #f2f7f8;
+	padding-top: 70px;
+}
+
+.home-six-style .header-section {
+    position: relative;
+    background: #f2f7f8;
+}
