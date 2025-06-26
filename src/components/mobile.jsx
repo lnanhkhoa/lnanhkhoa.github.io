@@ -10,7 +10,10 @@ export function Mobile() {
 
   React.useEffect(() => {
     setInterval(() => {
-      const text = `${new Date().getHours()}:${new Date().getMinutes()}`
+      const text = `${new Date().getHours().toString().padStart(2, '0')}:${new Date()
+        .getMinutes()
+        .toString()
+        .padStart(2, '0')}`
       if (text !== timeString) {
         settimeString(text)
       }
