@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 const GOOGLE_LINK = 'mailto:lnanhkhoa303@gmail.com'
 const LINKEDIN_LINK = 'https://www.linkedin.com/in/lnanhkhoa/'
@@ -43,17 +44,17 @@ export function Mobile() {
               <ul>
                 <li>
                   <a href={GOOGLE_LINK} target="_blank">
-                    <FontAwesomeIcon icon={['fab', 'fa-google']} />
+                    <FontAwesomeIcon icon={faGoogle} />
                   </a>
                 </li>
                 <li>
                   <a href={LINKEDIN_LINK} target="_blank">
-                    <FontAwesomeIcon icon={['fab', 'fa-linkedin-in']} />
+                    <FontAwesomeIcon icon={faLinkedinIn} />
                   </a>
                 </li>
                 <li>
                   <a href={GITHUB_LINK} target="_blank">
-                    <FontAwesomeIcon icon="fab fa-github" />
+                    <FontAwesomeIcon icon={faGithub} />
                   </a>
                 </li>
               </ul>
