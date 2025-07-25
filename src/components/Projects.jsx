@@ -131,17 +131,12 @@ const Projects = () => {
                   <div className="mb-4">
                     <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-2">Key Features:</h4>
                     <ul className="space-y-1">
-                      {project.keyFeatures.slice(0, 4).map((feature, idx) => (
+                      {project.keyFeatures.map((feature, idx) => (
                         <li key={idx} className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-2">
                           <div className="w-1 h-1 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                           <span>{feature}</span>
                         </li>
                       ))}
-                      {project.keyFeatures.length > 4 && (
-                        <li className="text-xs text-slate-500 dark:text-slate-400 italic">
-                          +{project.keyFeatures.length - 4} more features...
-                        </li>
-                      )}
                     </ul>
                   </div>
                   
