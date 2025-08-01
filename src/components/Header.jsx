@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +16,12 @@ const Header = () => {
   }, [])
 
   const navItems = [
-    { href: '#about', label: 'About' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/#about', label: 'About', isHash: true },
+    { href: '/#experience', label: 'Experience', isHash: true },
+    { href: '/#skills', label: 'Skills', isHash: true },
+    { href: '/#projects', label: 'Projects', isHash: true },
+    { href: '/blog', label: 'Blog', isHash: false },
+    { href: '/#contact', label: 'Contact', isHash: true },
   ]
 
   return (
@@ -27,21 +30,37 @@ const Header = () => {
     }`}>
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="#" className="text-2xl font-bold text-primary">
+          <Link to="/" className="text-2xl font-bold text-primary">
             Khoa Le
-          </a>
+          </Link>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              if (item.isHash) {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="text-foreground hover:text-primary transition-colors duration-200"
+                  >
+                    {item.label}
+                  </a>
+                )
+              } else {
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className={`text-foreground hover:text-primary transition-colors duration-200 ${
+                      location.pathname === item.href ? 'text-primary' : ''
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              }
+            })}
           </div>
 
           {/* Mobile Menu Button */}
@@ -56,16 +75,33 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 py-4 border-t">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="block py-2 text-foreground hover:text-primary transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              if (item.isHash) {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="block py-2 text-foreground hover:text-primary transition-colors duration-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )
+              } else {
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className={`block py-2 text-foreground hover:text-primary transition-colors duration-200 ${
+                      location.pathname === item.href ? 'text-primary' : ''
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              }
+            })}
           </div>
         )}
       </nav>
