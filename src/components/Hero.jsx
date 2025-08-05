@@ -25,7 +25,7 @@ const Hero = () => {
               Get In Touch
             </a>
             <a
-              href="/khoale-resume.pdf"
+              href="/khoale-senior-resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-border px-8 py-3 rounded-lg hover:bg-accent transition-colors duration-200 font-medium flex items-center justify-center gap-2"
