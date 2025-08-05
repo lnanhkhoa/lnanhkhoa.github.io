@@ -6,14 +6,14 @@ const Experience = () => {
     {
       company: "Groove Technology",
       location: "Vietnam",
-      period: "Jan 2022 - Present",
+      period: "Jan 2022 - May 2025",
       totalDuration: "3+ years",
       companyDescription:
         "Leading technology company specializing in enterprise solutions and digital transformation",
       roles: [
         {
           title: "Technical Lead",
-          period: "Sep 2023 - Present",
+          period: "Sep 2023 - May 2025",
           level: "Senior Leadership",
           description:
             "Leading technical architecture and team development for enterprise-level applications.",
