@@ -8,7 +8,7 @@ import Contact from '../components/Contact'
 
 function Home() {
   return (
-    <main>
+    <main className='bg-gradient-to-br from-slate-50 to-blue-50'>
       <Hero />
       <About />
       <Skills />

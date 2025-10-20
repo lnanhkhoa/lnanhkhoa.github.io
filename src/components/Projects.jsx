@@ -102,37 +102,37 @@ const Projects = () => {
           {/* All Projects */}
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <div key={index} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300">
+              <div key={index} className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-1">
+                      <h3 className="text-xl font-bold text-slate-900 mb-1">
                         {project.title}
                       </h3>
-                      <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                      <div className="flex items-center gap-2 text-sm text-slate-600">
                         <span className="font-medium">{project.company}</span>
                         <span>•</span>
                         <span>{project.role}</span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">{project.period}</div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400">
+                      <div className="text-xs text-slate-500 mb-1">{project.period}</div>
+                      <div className="text-xs text-slate-500">
                         {project.teamSize}
                       </div>
                     </div>
                   </div>
                   
-                  <p className="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed text-sm">
+                  <p className="text-slate-700 mb-4 leading-relaxed text-sm">
                     {project.description}
                   </p>
                   
                   {/* Key Features */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-2">Key Features:</h4>
+                    <h4 className="text-sm font-semibold text-slate-900 mb-2">Key Features:</h4>
                     <ul className="space-y-1">
                       {project.keyFeatures.map((feature, idx) => (
-                        <li key={idx} className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                        <li key={idx} className="text-xs text-slate-600 flex items-start gap-2">
                           <div className="w-1 h-1 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                           <span>{feature}</span>
                         </li>
@@ -142,7 +142,7 @@ const Projects = () => {
                   
                   {/* Technologies */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-2">Tech Stack:</h4>
+                    <h4 className="text-sm font-semibold text-slate-900 mb-2">Tech Stack:</h4>
                     <div className="flex flex-wrap gap-1">
                       {(expandedTech[index] ? project.technologies : project.technologies.slice(0, 6)).map((tech, idx) => {
                         const isAWS = tech.startsWith('AWS ')
@@ -151,8 +151,8 @@ const Projects = () => {
                             key={idx}
                             className={`px-2 py-1 rounded text-xs ${
                               isAWS 
-                                ? 'bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-700'
-                                : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+                                ? 'bg-orange-100 text-orange-700 border border-orange-200'
+                                : 'bg-slate-100 text-slate-700'
                             }`}
                           >
                             {tech}
@@ -162,7 +162,7 @@ const Projects = () => {
                       {!expandedTech[index] && project.technologies.length > 6 && (
                         <button
                           onClick={() => toggleTechExpansion(index)}
-                          className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded text-xs hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors cursor-pointer"
+                          className="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs hover:bg-blue-200 transition-colors cursor-pointer"
                         >
                           +{project.technologies.length - 6} more
                         </button>
@@ -170,7 +170,7 @@ const Projects = () => {
                       {expandedTech[index] && project.technologies.length > 6 && (
                         <button
                           onClick={() => toggleTechExpansion(index)}
-                          className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+                          className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs hover:bg-gray-200 transition-colors cursor-pointer"
                         >
                           Show less
                         </button>

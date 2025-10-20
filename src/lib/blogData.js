@@ -221,7 +221,7 @@ For complex components, use \`@apply\` in CSS:
 Tailwind makes dark mode implementation straightforward:
 
 \`\`\`jsx
-<div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+<div className="bg-white text-gray-900">
   <h1 className="text-2xl font-bold">
     This adapts to dark mode automatically
   </h1>

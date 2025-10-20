@@ -20,7 +20,7 @@ const Header = () => {
     { href: '/#experience', label: 'Experience', isHash: true },
     { href: '/#skills', label: 'Skills', isHash: true },
     { href: '/#projects', label: 'Projects', isHash: true },
-    { href: '/blog', label: 'Blog', isHash: false },
+    // { href: '/blog', label: 'Blog', isHash: false },
     { href: '/#contact', label: 'Contact', isHash: true },
   ]
 
