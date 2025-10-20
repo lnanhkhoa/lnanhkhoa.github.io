@@ -4,7 +4,7 @@ import { Calendar, MapPin, Users, Trophy, Code, Briefcase, TrendingUp, Star } fr
 const experiences = [
   {
     company: "Groove Technology",
-    location: "Vietnam",
+    location: "Remote - Ho Chi Minh City, Vietnam",
     period: "Jan 2022 - May 2025",
     totalDuration: "3+ years",
     companyDescription:
@@ -34,7 +34,7 @@ const experiences = [
           "Redis",
         ],
         impact: "High",
-        teamSize: "4-6 people",
+        teamSize: "4-6 members",
       },
       {
         title: "Senior Full Stack Developer",
@@ -50,7 +50,7 @@ const experiences = [
         ],
         technologies: ["KeystoneJS", "GraphQL", "React", "PostgreSQL", "TailwindCSS", "Docker"],
         impact: "Medium-High",
-        teamSize: "5-7 people",
+        teamSize: "5-7 members",
       },
       {
         title: "Software Engineer",
@@ -73,13 +73,13 @@ const experiences = [
           "BullMQ",
         ],
         impact: "Medium",
-        teamSize: "3-4 people",
+        teamSize: "3-4 members",
       },
     ],
   },
   {
     company: "Gigacover",
-    location: "Singapore",
+    location: "On-site - Ho Chi Minh City, Vietnam",
     period: "Nov 2020 - Dec 2021",
     totalDuration: "1 year 2 months",
     companyDescription:
@@ -99,13 +99,13 @@ const experiences = [
         ],
         technologies: ["React Native", "ReactJS", "Redux", "Saga", "TypeScript"],
         impact: "Medium",
-        teamSize: "10 people",
+        teamSize: "10 members",
       },
     ],
   },
   {
     company: "Freelancer",
-    location: "Remote",
+    location: "On-site - Ho Chi Minh City, Vietnam",
     period: "May 2020 - Oct 2020",
     totalDuration: "6 months",
     companyDescription: "Independent contractor developing real-time communication applications",
@@ -113,21 +113,28 @@ const experiences = [
       {
         title: "Full Stack Developer",
         period: "May 2020 - Oct 2020",
-        level: "Solo Contributor",
+        level: "Individual Contributor",
         description: "Independent contractor developing real-time communication applications.",
         achievements: [
           "Worked closely to gather requirements",
           "Built a chat application with real-time messaging and collaboration features similar to Slack, including message threads, reactions",
         ],
-        technologies: ["ExpressJS", "MongoDB", "React Native", "Saga", "Pusher"],
+        technologies: [
+          "ExpressJS",
+          "PostgreSQL",
+          "React Native",
+          "Redux-Saga",
+          "Pusher.JS",
+          "Socket.io",
+        ],
         impact: "High",
-        teamSize: "Solo",
+        teamSize: "5 members",
       },
     ],
   },
   {
     company: "Bitis",
-    location: "Ho Chi Minh City, Vietnam",
+    location: "On-site - Ho Chi Minh City, Vietnam",
     period: "Nov 2018 - April 2020",
     totalDuration: "1 year 6 months",
     companyDescription: "Vietnam's leading footwear brand with nationwide retail presence",
@@ -144,9 +151,17 @@ const experiences = [
           "Integrated third-party services",
           "Manually set up server configuration and load balancing to support a scalable system",
         ],
-        technologies: ["Strapi", "ExpressJS", "MySQL", "ReactJS", "Nginx", "BullMQ", "PM2"],
-        impact: "Medium-High",
-        teamSize: "5-6 people",
+        technologies: [
+          "Strapi CMS",
+          "ExpressJS",
+          "MySQL",
+          "MongoDb",
+          "ReactJS",
+          "React Native",
+          "PM2",
+        ],
+        impact: "High",
+        teamSize: "5-6 members",
       },
     ],
   },
@@ -186,7 +201,6 @@ const totalProjects = 10
 const teamLeadership = 4
 
 const Experience = () => {
-
   return (
     <section id="experience" className="py-20 px-6">
       <div className="container mx-auto">
