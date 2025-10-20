@@ -180,10 +180,10 @@ const getRoleIcon = (level) => {
   }
 }
 // Summary statistics
-const totalYears = 8
+const totalYears = 7
 const totalCompanies = 4
-const totalProjects = 15
-const teamLeadership = 3
+const totalProjects = 10
+const teamLeadership = 4
 
 const Experience = () => {
 
