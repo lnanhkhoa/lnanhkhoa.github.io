@@ -63,8 +63,7 @@ const PersonalProjects = () => {
         'Support multiple difficulty levels (A1-C2 CEFR framework)',
         'Include pronunciation guides with IPA notation',
         'Display word families and related words (synonyms, antonyms)',
-        'Generate example sentences with translations for context learning',
-        'Dark mode and responsive design'
+        'Generate example sentences with translations for context learning'
       ],
       liveUrl: null,
       githubUrl: null,
