@@ -1,9 +1,9 @@
 ---
-title: "Building a Portfolio with React and Vite"
-excerpt: "Add a compelling description of your post here..."
-date: "2025-08-01"
-readTime: "5 min read"
-tags: ["Tag1", "Tag2", "Tag3"]
+title: 'Building a Portfolio with React and Vite'
+excerpt: 'Add a compelling description of your post here...'
+date: '2025-08-01'
+readTime: '5 min read'
+tags: ['Tag1', 'Tag2', 'Tag3']
 featured: false
 ---
 
@@ -16,7 +16,7 @@ Write your introduction here...
 Add your main content here. You can use:
 
 - **Bold text**
-- *Italic text*
+- _Italic text_
 - `inline code`
 - [Links](https://example.com)
 
@@ -45,6 +45,7 @@ Or bullet points:
 Wrap up your post here...
 
 **Key takeaways:**
+
 1. Point one
 2. Point two
 3. Point three

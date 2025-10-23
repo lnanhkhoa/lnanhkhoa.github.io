@@ -1,7 +1,7 @@
-import React, { useState } from "react"
-import { Calendar, Clock, ArrowRight, Tag } from "lucide-react"
-import { useNavigate } from "react-router-dom"
-import { blogPosts } from "../lib/blogData"
+import React, { useState } from 'react'
+import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { blogPosts } from '../lib/blogData'
 
 function Blog() {
   const navigate = useNavigate()
@@ -47,10 +47,10 @@ function Blog() {
                   <div className="p-6">
                     <div className="flex items-center text-sm text-muted-foreground mb-3">
                       <Calendar className="w-4 h-4 mr-2" />
-                      {new Date(post.date).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
                       })}
                       <Clock className="w-4 h-4 ml-4 mr-2" />
                       {post.readTime}
@@ -91,8 +91,8 @@ function Blog() {
               onClick={() => setSelectedTag(null)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 selectedTag === null
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
               }`}
             >
               All Posts
@@ -103,8 +103,8 @@ function Blog() {
                 onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center ${
                   selectedTag === tag
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                 }`}
               >
                 <Tag className="w-3 h-3 mr-1" />
@@ -125,10 +125,10 @@ function Blog() {
               <div className="p-6">
                 <div className="flex items-center text-sm text-muted-foreground mb-3">
                   <Calendar className="w-4 h-4 mr-2" />
-                  {new Date(post.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
                   })}
                   <Clock className="w-4 h-4 ml-4 mr-2" />
                   {post.readTime}

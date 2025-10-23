@@ -12,14 +12,16 @@ function BlogPost() {
   const { id } = useParams()
   const navigate = useNavigate()
   // Look for post by slug (id parameter is actually the slug from the URL)
-  const post = blogPosts.find(p => p.slug === id)
+  const post = blogPosts.find((p) => p.slug === id)
 
   if (!post) {
     return (
       <section className="pt-24 pb-20 bg-background min-h-screen">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4">Post Not Found</h1>
-          <p className="text-muted-foreground mb-8">The blog post you're looking for doesn't exist.</p>
+          <p className="text-muted-foreground mb-8">
+            The blog post you're looking for doesn't exist.
+          </p>
           <button
             onClick={() => navigate('/blog')}
             className="flex items-center justify-center mx-auto text-primary hover:text-primary/80 transition-colors group"
@@ -36,7 +38,7 @@ function BlogPost() {
       navigator.share({
         title: post.title,
         text: post.excerpt,
-        url: window.location.href,
+        url: window.location.href
       })
     } else {
       // Fallback: copy to clipboard
@@ -48,38 +50,22 @@ function BlogPost() {
   // Custom components for markdown rendering
   const markdownComponents = {
     h1: ({ children }) => (
-      <h1 className="text-3xl font-bold text-foreground mt-8 mb-4 first:mt-0">
-        {children}
-      </h1>
+      <h1 className="text-3xl font-bold text-foreground mt-8 mb-4 first:mt-0">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl font-semibold text-foreground mt-6 mb-3">
-        {children}
-      </h2>
+      <h2 className="text-2xl font-semibold text-foreground mt-6 mb-3">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl font-semibold text-foreground mt-4 mb-2">
-        {children}
-      </h3>
+      <h3 className="text-xl font-semibold text-foreground mt-4 mb-2">{children}</h3>
     ),
-    p: ({ children }) => (
-      <p className="text-muted-foreground mb-4 leading-relaxed">
-        {children}
-      </p>
-    ),
+    p: ({ children }) => <p className="text-muted-foreground mb-4 leading-relaxed">{children}</p>,
     ul: ({ children }) => (
-      <ul className="list-disc list-inside mb-4 text-muted-foreground space-y-1">
-        {children}
-      </ul>
+      <ul className="list-disc list-inside mb-4 text-muted-foreground space-y-1">{children}</ul>
     ),
     ol: ({ children }) => (
-      <ol className="list-decimal list-inside mb-4 text-muted-foreground space-y-1">
-        {children}
-      </ol>
+      <ol className="list-decimal list-inside mb-4 text-muted-foreground space-y-1">{children}</ol>
     ),
-    li: ({ children }) => (
-      <li className="mb-1">{children}</li>
-    ),
+    li: ({ children }) => <li className="mb-1">{children}</li>,
     code: ({ inline, children }) => {
       if (inline) {
         return (
@@ -104,15 +90,11 @@ function BlogPost() {
         {children}
       </blockquote>
     ),
-    strong: ({ children }) => (
-      <strong className="font-semibold text-foreground">{children}</strong>
-    ),
-    em: ({ children }) => (
-      <em className="italic">{children}</em>
-    ),
+    strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
+    em: ({ children }) => <em className="italic">{children}</em>,
     a: ({ href, children }) => (
-      <a 
-        href={href} 
+      <a
+        href={href}
         className="text-primary hover:text-primary/80 underline transition-colors"
         target="_blank"
         rel="noopener noreferrer"
@@ -139,14 +121,14 @@ function BlogPost() {
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
             {post.title}
           </h1>
-          
+
           <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-6">
             <div className="flex items-center">
               <Calendar className="w-5 h-5 mr-2" />
-              {new Date(post.date).toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+              {new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
               })}
             </div>
             <div className="flex items-center">
@@ -163,8 +145,8 @@ function BlogPost() {
           </div>
 
           <div className="flex flex-wrap gap-2 mb-8">
-            {post.tags.map(tag => (
-              <span 
+            {post.tags.map((tag) => (
+              <span
                 key={tag}
                 className="flex items-center px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm"
               >
@@ -174,9 +156,7 @@ function BlogPost() {
             ))}
           </div>
 
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            {post.excerpt}
-          </p>
+          <p className="text-xl text-muted-foreground leading-relaxed">{post.excerpt}</p>
         </header>
 
         {/* Post content */}
@@ -194,8 +174,8 @@ function BlogPost() {
         <footer className="mt-16 pt-8 border-t border-border">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
-              {post.tags.map(tag => (
-                <span 
+              {post.tags.map((tag) => (
+                <span
                   key={tag}
                   className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm hover:bg-secondary/80 transition-colors cursor-pointer"
                 >

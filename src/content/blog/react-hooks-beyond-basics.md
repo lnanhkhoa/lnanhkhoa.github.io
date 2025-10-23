@@ -1,9 +1,9 @@
 ---
-title: "The Power of React Hooks: Beyond useState and useEffect"
-excerpt: "Exploring advanced React hooks and creating custom hooks to solve common problems in React applications."
-date: "2024-07-05"
-readTime: "8 min read"
-tags: ["React", "Hooks", "JavaScript", "Performance"]
+title: 'The Power of React Hooks: Beyond useState and useEffect'
+excerpt: 'Exploring advanced React hooks and creating custom hooks to solve common problems in React applications.'
+date: '2024-07-05'
+readTime: '8 min read'
+tags: ['React', 'Hooks', 'JavaScript', 'Performance']
 featured: true
 ---
 
@@ -16,10 +16,10 @@ React Hooks have transformed how we write React components. Let's explore some a
 When `useState` isn't enough, `useReducer` provides a more predictable state management pattern:
 
 ```jsx
-const initialState = { 
-  count: 0, 
+const initialState = {
+  count: 0,
   loading: false,
-  error: null 
+  error: null
 }
 
 function reducer(state, action) {
@@ -41,7 +41,7 @@ function reducer(state, action) {
 
 function Counter() {
   const [state, dispatch] = useReducer(reducer, initialState)
-  
+
   const handleIncrement = () => {
     dispatch({ type: 'setLoading', payload: true })
     // Simulate async operation
@@ -50,7 +50,7 @@ function Counter() {
       dispatch({ type: 'setLoading', payload: false })
     }, 500)
   }
-  
+
   return (
     <div>
       <p>Count: {state.count}</p>
@@ -59,12 +59,8 @@ function Counter() {
       <button onClick={handleIncrement} disabled={state.loading}>
         +
       </button>
-      <button onClick={() => dispatch({ type: 'decrement' })}>
-        -
-      </button>
-      <button onClick={() => dispatch({ type: 'reset' })}>
-        Reset
-      </button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
     </div>
   )
 }
@@ -104,13 +100,11 @@ function useLocalStorage(key, initialValue) {
 // Usage
 function Settings() {
   const [theme, setTheme] = useLocalStorage('theme', 'light')
-  
+
   return (
     <div>
       <p>Current theme: {theme}</p>
-      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-        Toggle Theme
-      </button>
+      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>Toggle Theme</button>
     </div>
   )
 }
@@ -126,21 +120,21 @@ function useFetch(url, options = {}) {
 
   useEffect(() => {
     const abortController = new AbortController()
-    
+
     const fetchData = async () => {
       try {
         setLoading(true)
         setError(null)
-        
+
         const response = await fetch(url, {
           ...options,
           signal: abortController.signal
         })
-        
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-        
+
         const result = await response.json()
         setData(result)
       } catch (err) {
@@ -163,11 +157,11 @@ function useFetch(url, options = {}) {
 // Usage
 function UserProfile({ userId }) {
   const { data: user, loading, error } = useFetch(`/api/users/${userId}`)
-  
+
   if (loading) return <div>Loading...</div>
   if (error) return <div>Error: {error}</div>
   if (!user) return <div>No user found</div>
-  
+
   return (
     <div>
       <h1>{user.name}</h1>
@@ -187,29 +181,29 @@ function ExpensiveComponent({ items, onItemClick, filter }) {
   const expensiveValue = useMemo(() => {
     console.log('Calculating expensive value...')
     return items
-      .filter(item => item.category === filter)
+      .filter((item) => item.category === filter)
       .reduce((acc, item) => acc + item.value, 0)
   }, [items, filter])
 
   // Memoize event handlers to prevent unnecessary re-renders
-  const handleClick = useCallback((item) => {
-    onItemClick(item.id, item.name)
-  }, [onItemClick])
+  const handleClick = useCallback(
+    (item) => {
+      onItemClick(item.id, item.name)
+    },
+    [onItemClick]
+  )
 
   // Memoize filtered items
   const filteredItems = useMemo(() => {
-    return items.filter(item => item.category === filter)
+    return items.filter((item) => item.category === filter)
   }, [items, filter])
 
   return (
     <div>
       <p>Total Value: ${expensiveValue}</p>
       <div>
-        {filteredItems.map(item => (
-          <button 
-            key={item.id} 
-            onClick={() => handleClick(item)}
-          >
+        {filteredItems.map((item) => (
+          <button key={item.id} onClick={() => handleClick(item)}>
             {item.name} - ${item.value}
           </button>
         ))}
@@ -239,7 +233,7 @@ function Timer() {
     if (!isRunning) {
       setIsRunning(true)
       intervalRef.current = setInterval(() => {
-        setCount(prevCount => prevCount + 1)
+        setCount((prevCount) => prevCount + 1)
       }, 1000)
     }
   }
@@ -275,9 +269,7 @@ function Timer() {
       <button onClick={stopTimer} disabled={!isRunning}>
         Stop
       </button>
-      <button onClick={resetTimer}>
-        Reset
-      </button>
+      <button onClick={resetTimer}>Reset</button>
     </div>
   )
 }
@@ -292,16 +284,12 @@ const ThemeContext = createContext()
 
 function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light')
-  
+
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light')
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
   }
-  
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  )
+
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
 }
 
 function useTheme() {
@@ -324,12 +312,10 @@ function App() {
 
 function Header() {
   const { theme, toggleTheme } = useTheme()
-  
+
   return (
     <header className={`header ${theme}`}>
-      <button onClick={toggleTheme}>
-        Switch to {theme === 'light' ? 'dark' : 'light'} mode
-      </button>
+      <button onClick={toggleTheme}>Switch to {theme === 'light' ? 'dark' : 'light'} mode</button>
     </header>
   )
 }
@@ -338,19 +324,23 @@ function Header() {
 ## Best Practices
 
 ### 1. Rules of Hooks
+
 - Only call hooks at the top level
 - Only call hooks from React functions
 - Use ESLint plugin for hooks
 
 ### 2. Custom Hook Naming
+
 - Always start with "use"
 - Be descriptive: `useLocalStorage`, not `useLS`
 
 ### 3. Dependency Arrays
+
 - Include all dependencies in useEffect, useCallback, useMemo
 - Use ESLint plugin for exhaustive deps
 
 ### 4. Performance Considerations
+
 - Don't overuse useMemo and useCallback
 - Profile before optimizing
 - Consider if the optimization is worth the complexity

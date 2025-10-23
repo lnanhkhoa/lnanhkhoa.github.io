@@ -18,10 +18,10 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
+
     // Create mailto link with pre-filled content
     const { name, email, subject, message } = formData
-    
+
     const emailSubject = subject || 'Contact from Portfolio'
     const emailBody = `Hi Khoa,
 
@@ -32,12 +32,12 @@ ${message}
 Best regards,
 ${name}
 ${email ? `\nEmail: ${email}` : ''}`
-    
+
     const mailtoLink = `mailto:lnanhkhoa303@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`
-    
+
     // Open user's email client
     window.location.href = mailtoLink
-    
+
     // Reset form after opening email client
     setTimeout(() => {
       setFormData({ name: '', email: '', subject: '', message: '' })
@@ -45,20 +45,20 @@ ${email ? `\nEmail: ${email}` : ''}`
   }
 
   return (
-    <section id="contact" className="py-20 px-6">
+    <section id="contact" className="p-6">
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Get In Touch</h2>
-          
+
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>
               <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm always interested in discussing new opportunities, innovative projects, 
-                or just having a chat about technology. Feel free to reach out!
+                I'm always interested in discussing new opportunities, innovative projects, or just
+                having a chat about technology. Feel free to reach out!
               </p>
-              
+
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-primary" />
@@ -114,7 +114,7 @@ ${email ? `\nEmail: ${email}` : ''}`
                     placeholder="Your name"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
                     Email
@@ -130,7 +130,7 @@ ${email ? `\nEmail: ${email}` : ''}`
                     placeholder="your.email@example.com"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium mb-2">
                     Subject
@@ -146,7 +146,7 @@ ${email ? `\nEmail: ${email}` : ''}`
                     placeholder="What's this about?"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
                     Message
@@ -162,7 +162,7 @@ ${email ? `\nEmail: ${email}` : ''}`
                     placeholder="Tell me about your project or just say hello!"
                   />
                 </div>
-                
+
                 <button
                   type="submit"
                   className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors duration-200 flex items-center justify-center gap-2 font-medium"

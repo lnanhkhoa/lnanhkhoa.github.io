@@ -15,25 +15,41 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const handleSmoothScroll = (e, href) => {
+    e.preventDefault()
+    const targetId = href.replace('/#', '')
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+      setIsMenuOpen(false)
+    }
+  }
+
   const navItems = [
     { href: '/#about', label: 'About', isHash: true },
-    { href: '/#experience', label: 'Experience', isHash: true },
     { href: '/#skills', label: 'Skills', isHash: true },
+    { href: '/#experience', label: 'Experience', isHash: true },
     { href: '/#projects', label: 'Projects', isHash: true },
+    { href: '/#personal-projects', label: 'Personal Projects', isHash: true },
     // { href: '/blog', label: 'Blog', isHash: false },
-    { href: '/#contact', label: 'Contact', isHash: true },
+    { href: '/#contact', label: 'Contact', isHash: true }
   ]
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/80 backdrop-blur-md border-b' : 'bg-transparent'
-    }`}>
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-background/80 backdrop-blur-md border-b' : 'bg-transparent'
+      }`}
+    >
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-2xl font-bold text-primary">
             Khoa Le
           </Link>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => {
@@ -42,7 +58,8 @@ const Header = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="text-foreground hover:text-primary transition-colors duration-200"
+                    onClick={(e) => handleSmoothScroll(e, item.href)}
+                    className="text-foreground hover:text-primary transition-colors duration-200 cursor-pointer"
                   >
                     {item.label}
                   </a>
@@ -64,10 +81,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -81,8 +95,8 @@ const Header = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="block py-2 text-foreground hover:text-primary transition-colors duration-200"
-                    onClick={() => setIsMenuOpen(false)}
+                    className="block py-2 text-foreground hover:text-primary transition-colors duration-200 cursor-pointer"
+                    onClick={(e) => handleSmoothScroll(e, item.href)}
                   >
                     {item.label}
                   </a>

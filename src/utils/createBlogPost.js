@@ -6,15 +6,15 @@ export function generateBlogPostTemplate(title, excerpt, tags = [], featured = f
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '')
-  
+
   const date = new Date().toISOString().split('T')[0]
-  
+
   const frontmatter = `---
 title: "${title}"
 excerpt: "${excerpt}"
 date: "${date}"
 readTime: "5 min read"
-tags: [${tags.map(tag => `"${tag}"`).join(', ')}]
+tags: [${tags.map((tag) => `"${tag}"`).join(', ')}]
 featured: ${featured}
 ---
 
@@ -85,27 +85,27 @@ export function createBlogPostData(markdownContent) {
   // Parse frontmatter and content
   const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/
   const match = markdownContent.match(frontmatterRegex)
-  
+
   if (!match) {
     throw new Error('Invalid markdown format. Frontmatter is required.')
   }
-  
+
   const [, frontmatterStr, content] = match
   const frontmatter = {}
-  
+
   // Parse frontmatter
-  frontmatterStr.split('\n').forEach(line => {
+  frontmatterStr.split('\n').forEach((line) => {
     const [key, ...valueParts] = line.split(':')
     if (key && valueParts.length > 0) {
       const value = valueParts.join(':').trim()
-      
+
       // Parse different value types
       if (value.startsWith('[') && value.endsWith(']')) {
         // Array
         frontmatter[key.trim()] = value
           .slice(1, -1)
           .split(',')
-          .map(item => item.trim().replace(/^"(.*)"$/, '$1'))
+          .map((item) => item.trim().replace(/^"(.*)"$/, '$1'))
       } else if (value === 'true' || value === 'false') {
         // Boolean
         frontmatter[key.trim()] = value === 'true'
@@ -115,7 +115,7 @@ export function createBlogPostData(markdownContent) {
       }
     }
   })
-  
+
   return {
     ...frontmatter,
     content: content.trim()

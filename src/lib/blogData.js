@@ -8,12 +8,13 @@ export const blogPosts = getBlogPosts()
 const legacyBlogPosts = [
   {
     id: 1,
-    slug: "building-modern-web-apps-with-react-vite",
-    title: "Building Modern Web Applications with React and Vite",
-    excerpt: "Exploring the benefits of using Vite as a build tool for React applications and how it improves development experience.",
-    date: "2024-07-15",
-    readTime: "5 min read",
-    tags: ["React", "Vite", "JavaScript", "Web Development"],
+    slug: 'building-modern-web-apps-with-react-vite',
+    title: 'Building Modern Web Applications with React and Vite',
+    excerpt:
+      'Exploring the benefits of using Vite as a build tool for React applications and how it improves development experience.',
+    date: '2024-07-15',
+    readTime: '5 min read',
+    tags: ['React', 'Vite', 'JavaScript', 'Web Development'],
     featured: true,
     content: `# Building Modern Web Applications with React and Vite
 
@@ -105,12 +106,13 @@ Give Vite a try on your next React project – you won't look back!`
   },
   {
     id: 2,
-    slug: "mastering-tailwind-css",
-    title: "Mastering Tailwind CSS: Tips and Best Practices",
-    excerpt: "A comprehensive guide to writing maintainable and scalable CSS with Tailwind CSS framework.",
-    date: "2024-07-10",
-    readTime: "7 min read",
-    tags: ["CSS", "Tailwind", "Frontend", "Design"],
+    slug: 'mastering-tailwind-css',
+    title: 'Mastering Tailwind CSS: Tips and Best Practices',
+    excerpt:
+      'A comprehensive guide to writing maintainable and scalable CSS with Tailwind CSS framework.',
+    date: '2024-07-10',
+    readTime: '7 min read',
+    tags: ['CSS', 'Tailwind', 'Frontend', 'Design'],
     featured: false,
     content: `# Mastering Tailwind CSS: Tips and Best Practices
 
@@ -261,12 +263,13 @@ Start small, build components, and gradually adopt more advanced patterns. Tailw
   },
   {
     id: 3,
-    slug: "react-hooks-beyond-basics",
-    title: "The Power of React Hooks: Beyond useState and useEffect",
-    excerpt: "Exploring advanced React hooks and creating custom hooks to solve common problems in React applications.",
-    date: "2024-07-05",
-    readTime: "8 min read",
-    tags: ["React", "Hooks", "JavaScript", "Performance"],
+    slug: 'react-hooks-beyond-basics',
+    title: 'The Power of React Hooks: Beyond useState and useEffect',
+    excerpt:
+      'Exploring advanced React hooks and creating custom hooks to solve common problems in React applications.',
+    date: '2024-07-05',
+    readTime: '8 min read',
+    tags: ['React', 'Hooks', 'JavaScript', 'Performance'],
     featured: true,
     content: `# The Power of React Hooks: Beyond useState and useEffect
 

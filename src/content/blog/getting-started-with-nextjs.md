@@ -1,9 +1,9 @@
 ---
-title: "Getting Started with Next.js: A Complete Guide"
-excerpt: "Learn how to build modern web applications with Next.js, from setup to deployment. Perfect for developers new to the framework."
-date: "2024-07-20"
-readTime: "6 min read"
-tags: ["Next.js", "React", "JavaScript", "Web Development"]
+title: 'Getting Started with Next.js: A Complete Guide'
+excerpt: 'Learn how to build modern web applications with Next.js, from setup to deployment. Perfect for developers new to the framework.'
+date: '2024-07-20'
+readTime: '6 min read'
+tags: ['Next.js', 'React', 'JavaScript', 'Web Development']
 featured: true
 ---
 
@@ -17,7 +17,7 @@ Next.js is a React framework that provides a complete solution for building web 
 
 - **Server-Side Rendering (SSR)** - Better SEO and performance
 - **Static Site Generation (SSG)** - Pre-built pages for lightning-fast loading
-- **API Routes** - Build your backend alongside your frontend
+- **API Routes** - Build your back-end alongside your front-end
 - **File-based Routing** - No need for complex routing configuration
 - **Built-in CSS Support** - Including CSS Modules and Sass
 - **Image Optimization** - Automatic image optimization and lazy loading
@@ -106,17 +106,17 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts,
+      posts
     },
     // Regenerate the page at most once per day
-    revalidate: 86400,
+    revalidate: 86400
   }
 }
 
 export default function Blog({ posts }) {
   return (
     <div>
-      {posts.map(post => (
+      {posts.map((post) => (
         <article key={post.id}>
           <h2>{post.title}</h2>
           <p>{post.excerpt}</p>
@@ -139,15 +139,15 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      post,
-    },
+      post
+    }
   }
 }
 ```
 
 ## API Routes
 
-Build your backend API alongside your frontend:
+Build your back-end API alongside your frontend:
 
 ```javascript
 // pages/api/hello.js
@@ -239,6 +239,7 @@ The easiest way to deploy Next.js apps:
 ### Other Platforms
 
 Next.js can be deployed to:
+
 - **Netlify** - Static and serverless
 - **AWS** - Using Serverless Framework
 - **Docker** - Containerized deployment
@@ -278,7 +279,7 @@ Reduce bundle size with code splitting:
 import dynamic from 'next/dynamic'
 
 const DynamicComponent = dynamic(() => import('../components/Heavy'), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <p>Loading...</p>
 })
 ```
 
@@ -291,11 +292,11 @@ Customize your Next.js configuration:
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['example.com'],
+    domains: ['example.com']
   },
   experimental: {
-    appDir: true,
-  },
+    appDir: true
+  }
 }
 
 module.exports = nextConfig

@@ -2,16 +2,16 @@
 // This automatically imports all markdown files and parses their frontmatter
 
 // Use Vite's import.meta.glob to dynamically import all markdown files
-const markdownModules = import.meta.glob('../content/blog/*.md', { 
+const markdownModules = import.meta.glob('../content/blog/*.md', {
   as: 'raw',
-  eager: true 
+  eager: true
 })
 
 // Parse frontmatter from markdown content
 function parseFrontmatter(content) {
   const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/
   const match = content.match(frontmatterRegex)
-  
+
   if (!match) {
     // If no frontmatter, return content as-is with empty metadata
     return {
@@ -19,28 +19,28 @@ function parseFrontmatter(content) {
       content: content
     }
   }
-  
+
   const [, frontmatterStr, markdownContent] = match
   const metadata = {}
-  
+
   // Parse frontmatter
-  frontmatterStr.split('\n').forEach(line => {
+  frontmatterStr.split('\n').forEach((line) => {
     const colonIndex = line.indexOf(':')
     if (colonIndex === -1) return
-    
+
     const key = line.slice(0, colonIndex).trim()
     const value = line.slice(colonIndex + 1).trim()
-    
+
     if (!key || !value) return
-    
+
     // Parse different value types
     if (value.startsWith('[') && value.endsWith(']')) {
       // Array
       metadata[key] = value
         .slice(1, -1)
         .split(',')
-        .map(item => item.trim().replace(/^["'](.*)["']$/, '$1'))
-        .filter(item => item.length > 0)
+        .map((item) => item.trim().replace(/^["'](.*)["']$/, '$1'))
+        .filter((item) => item.length > 0)
     } else if (value === 'true' || value === 'false') {
       // Boolean
       metadata[key] = value === 'true'
@@ -49,7 +49,7 @@ function parseFrontmatter(content) {
       metadata[key] = value.replace(/^["'](.*)["']$/, '$1')
     }
   })
-  
+
   return {
     metadata,
     content: markdownContent.trim()
@@ -69,16 +69,16 @@ function generateSlug(filename) {
 export function loadBlogPosts() {
   const posts = []
   let idCounter = 1
-  
+
   // Process each markdown file
   Object.entries(markdownModules).forEach(([filepath, content]) => {
     // Extract filename from filepath
     const filename = filepath.split('/').pop().replace('.md', '')
     const { metadata, content: markdownContent } = parseFrontmatter(content)
-    
+
     // Generate slug from filename if not provided in frontmatter
     const slug = metadata.slug || generateSlug(filename)
-    
+
     // Create post object
     const post = {
       id: idCounter++,
@@ -91,10 +91,10 @@ export function loadBlogPosts() {
       featured: metadata.featured || false,
       content: markdownContent
     }
-    
+
     posts.push(post)
   })
-  
+
   // Sort posts by date (newest first)
   return posts.sort((a, b) => new Date(b.date) - new Date(a.date))
 }
@@ -103,12 +103,13 @@ export function loadBlogPosts() {
 export const fallbackBlogPosts = [
   {
     id: 1,
-    slug: "react-hooks-beyond-basics",
-    title: "The Power of React Hooks: Beyond useState and useEffect",
-    excerpt: "Exploring advanced React hooks and creating custom hooks to solve common problems in React applications.",
-    date: "2024-07-05",
-    readTime: "8 min read",
-    tags: ["React", "Hooks", "JavaScript", "Performance"],
+    slug: 'react-hooks-beyond-basics',
+    title: 'The Power of React Hooks: Beyond useState and useEffect',
+    excerpt:
+      'Exploring advanced React hooks and creating custom hooks to solve common problems in React applications.',
+    date: '2024-07-05',
+    readTime: '8 min read',
+    tags: ['React', 'Hooks', 'JavaScript', 'Performance'],
     featured: true,
     content: `# The Power of React Hooks: Beyond useState and useEffect
 

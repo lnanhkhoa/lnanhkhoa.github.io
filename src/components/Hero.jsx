@@ -13,10 +13,10 @@ const Hero = () => {
             Senior Full-Stack Developer
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-            Passionate backend-focused full-stack developer with expertise in Node.js, NestJS, and React. 
+            Passionate back-end-focused full-stack developer with expertise in NodeJS and React.
             Building scalable, performant applications with modern technologies and best practices.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <a
               href="#contact"
