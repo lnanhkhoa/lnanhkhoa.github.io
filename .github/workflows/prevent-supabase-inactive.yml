@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: Make an API request to Lovinu
         run: |
-          curl -X GET "https://mvfeifihugwlmroolrfb.supabase.co/rest/v1" \\
-          -H "apikey: ${SUPERBASE_ANON_KEY_LOVINU}" \\
-          -H "Authorization: Bearer ${SUPERBASE_ANON_KEY_LOVINU}"
+          curl -X GET "https://mvfeifihugwlmroolrfb.supabase.co/rest/v1" \
+            -H "apikey: ${SUPERBASE_ANON_KEY_LOVINU}" \
+            -H "Authorization: Bearer ${SUPERBASE_ANON_KEY_LOVINU}"
       
       - name: Make an API request to supabase-purple-ocean
         run: |
-          curl -X GET "https://ifwhuefqtytxsrqonrqe.supabase.co/rest/v1" \\
-          -H "apikey: ${SUPERBASE_SERVICE_KEY_OCEAN}" \\
+          curl -X GET "https://ifwhuefqtytxsrqonrqe.supabase.co/rest/v1" \
+          -H "apikey: ${SUPERBASE_SERVICE_KEY_OCEAN}" \
           -H "Authorization: Bearer ${SUPERBASE_SERVICE_KEY_OCEAN}"
