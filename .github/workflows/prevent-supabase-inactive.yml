@@ -1,0 +1,22 @@
+name: Prevent Supabase Inactivity
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Runs at midnight every Sunday
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  ping-database:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make an API request to Lovinu
+        run: |
+          curl -X GET "https://mvfeifihugwlmroolrfb.supabase.co/rest/v1" \\
+          -H "apikey: ${SUPERBASE_ANON_KEY_LOVINU}" \\
+          -H "Authorization: Bearer ${SUPERBASE_ANON_KEY_LOVINU}"
+      
+      - name: Make an API request to supabase-purple-ocean
+        run: |
+          curl -X GET "https://ifwhuefqtytxsrqonrqe.supabase.co/rest/v1" \\
+          -H "apikey: ${SUPERBASE_SERVICE_KEY_OCEAN}" \\
+          -H "Authorization: Bearer ${SUPERBASE_SERVICE_KEY_OCEAN}"
