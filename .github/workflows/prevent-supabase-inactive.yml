@@ -2,12 +2,15 @@ name: Prevent Supabase Inactivity
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # Runs at midnight every Sunday
+    - cron: '0 0 * * 3'  # Runs at midnight every Wednesday
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
   ping-database:
     runs-on: ubuntu-latest
+    env:
+      SUPERBASE_ANON_KEY_LOVINU: ${{ secrets.SUPERBASE_ANON_KEY_LOVINU }}
+      SUPERBASE_ANON_KEY_OCEAN: ${{ secrets.SUPERBASE_ANON_KEY_OCEAN }}
     steps:
       - name: Make an API request to Lovinu
         run: |
