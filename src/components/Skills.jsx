@@ -1,86 +1,74 @@
-import React from 'react'
 import { Server, Code, Database, Cloud } from 'lucide-react'
+import Section from './Section'
+import Reveal from './Reveal'
+import { skillCategories } from '../content/skills'
+
+const categoryIcons = {
+  'Back-end': Server,
+  'Front-end': Code,
+  Database: Database,
+  'Infra & Tooling': Cloud
+}
+
+// Skills at or above this proficiency are the ones I work in daily; they get
+// the accent treatment so the core stack is readable at a glance.
+const CORE_LEVEL = 85
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: 'Back-end',
-      icon: <Server className="w-5 h-5" />,
-      skills: [
-        { name: 'KeystoneJS', level: 90 },
-        { name: 'Node.js', level: 90 },
-        { name: 'NestJS', level: 80 },
-        { name: 'TypeScript', level: 80 },
-        { name: 'GraphQL', level: 85 },
-        { name: 'REST APIs', level: 80 }
-      ]
-    },
-    {
-      title: 'Front-end',
-      icon: <Code className="w-5 h-5" />,
-      skills: [
-        { name: 'ReactJS', level: 90 },
-        { name: 'Next.JS', level: 85 },
-        { name: 'TailwindCSS', level: 85 },
-        { name: 'Shadcn UI', level: 85 }
-      ]
-    },
-    {
-      title: 'Database',
-      icon: <Database className="w-5 h-5" />,
-      skills: [
-        { name: 'PostgreSQL', level: 88 },
-        { name: 'MongoDB', level: 85 }
-      ]
-    },
-    {
-      title: 'Others',
-      icon: <Cloud className="w-5 h-5" />,
-      skills: [
-        { name: 'Docker', level: 85 },
-        { name: 'AWS', level: 75 }
-      ]
-    }
-  ]
-
   return (
-    <section id="skills" className="p-6">
-      <div className="container mx-auto">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Skills & Technologies</h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {skillCategories.map((category, index) => (
+    <Section
+      id="skills"
+      index="02"
+      title="Skills & technologies"
+      description="The stack I reach for when building production systems."
+    >
+      <Reveal>
+        <div className="glass-card card-shine overflow-hidden">
+          {skillCategories.map((category, index) => {
+            const Icon = categoryIcons[category.title]
+            return (
               <div
-                key={index}
-                className="bg-white rounded-lg p-6 border border-slate-200 shadow-sm"
+                key={category.title}
+                className={`grid gap-4 p-6 md:grid-cols-[220px_1fr] md:items-center md:gap-8 md:p-8 ${
+                  index > 0 ? 'border-t border-white/[0.07]' : ''
+                }`}
               >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="text-blue-600">{category.icon}</div>
-                  <h3 className="text-xl font-semibold text-slate-900">{category.title}</h3>
+                <div className="flex items-center gap-3.5">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
+                    <Icon size={16} />
+                  </span>
+                  <h3 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                    {category.title}
+                  </h3>
                 </div>
 
-                <div className="space-y-4">
-                  {category.skills.map((skill, idx) => (
-                    <div key={idx}>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-slate-700">{skill.name}</span>
-                      </div>
-                      <div className="w-full bg-slate-200 rounded-full h-2">
-                        <div
-                          className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500 ease-out"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
-                    </div>
+                <div className="flex flex-wrap gap-2.5">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill.name}
+                      className={`rounded-full border px-3.5 py-2 font-mono text-xs transition-colors ${
+                        skill.level >= CORE_LEVEL
+                          ? 'border-primary/30 bg-primary/10 text-primary'
+                          : 'border-white/10 bg-white/[0.04] text-foreground/70 hover:border-white/20'
+                      }`}
+                    >
+                      {skill.name}
+                    </span>
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
+            )
+          })}
         </div>
-      </div>
-    </section>
+      </Reveal>
+
+      <Reveal delay={100}>
+        <p className="mt-5 flex items-center gap-2.5 font-mono text-xs text-muted-foreground">
+          <span className="h-2 w-2 rounded-full bg-primary/70" />
+          core stack — used daily in production
+        </p>
+      </Reveal>
+    </Section>
   )
 }
 

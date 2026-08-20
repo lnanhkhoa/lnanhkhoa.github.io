@@ -1,17 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Menu, X, FileDown } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { profile } from '../content/profile'
+
+// { href: '/blog', label: 'blog' } — re-add once blog pages are enabled
+const navItems = [
+  { href: '/#about', label: 'about' },
+  { href: '/#skills', label: 'skills' },
+  { href: '/#experience', label: 'experience' },
+  { href: '/#projects', label: 'work' },
+  // { href: '/#personal-projects', label: 'lab' },
+  { href: '/#contact', label: 'contact' }
+]
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const location = useLocation()
+  const [activeSection, setActiveSection] = useState('')
 
+  // Scroll spy — highlight the section currently in view
   useEffect(() => {
+    const ids = navItems.map((item) => item.href.replace('/#', ''))
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const scrollPos = window.scrollY + window.innerHeight * 0.35
+      let current = ''
+      ids.forEach((id) => {
+        const el = document.getElementById(id)
+        if (el && el.offsetTop <= scrollPos) current = id
+      })
+      setActiveSection(current)
     }
-    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -20,105 +39,88 @@ const Header = () => {
     const targetId = href.replace('/#', '')
     const element = document.getElementById(targetId)
     if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      })
+      element.scrollIntoView({ behavior: 'smooth' })
       setIsMenuOpen(false)
     }
   }
 
-  const navItems = [
-    { href: '/#about', label: 'About', isHash: true },
-    { href: '/#skills', label: 'Skills', isHash: true },
-    { href: '/#experience', label: 'Experience', isHash: true },
-    { href: '/#projects', label: 'Projects', isHash: true },
-    { href: '/#personal-projects', label: 'Personal Projects', isHash: true },
-    // { href: '/blog', label: 'Blog', isHash: false },
-    { href: '/#contact', label: 'Contact', isHash: true }
-  ]
-
   return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-md border-b' : 'bg-transparent'
-      }`}
-    >
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-primary">
-            Khoa Le
-          </Link>
+    <header className="fixed inset-x-0 top-4 z-50 px-4">
+      <nav className="glass-card mx-auto flex max-w-4xl items-center justify-between rounded-full py-2.5 pl-6 pr-2.5">
+        <Link
+          to="/"
+          className="font-mono text-lg font-semibold text-foreground transition-colors hover:text-primary"
+        >
+          khoa<span className="text-primary">.le</span>
+          <span className="ml-0.5 inline-block h-4 w-[2px] translate-y-[3px] bg-primary animate-caret-blink" />
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => {
-              if (item.isHash) {
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={(e) => handleSmoothScroll(e, item.href)}
-                    className="text-foreground hover:text-primary transition-colors duration-200 cursor-pointer"
-                  >
-                    {item.label}
-                  </a>
-                )
-              } else {
-                return (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    className={`text-foreground hover:text-primary transition-colors duration-200 ${
-                      location.pathname === item.href ? 'text-primary' : ''
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                )
-              }
-            })}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+        {/* Desktop Navigation */}
+        <div className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => {
+            const sectionId = item.href.replace('/#', '')
+            const isActive = activeSection === sectionId
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleSmoothScroll(e, item.href)}
+                className={`rounded-full px-3.5 py-1.5 font-mono text-sm transition-colors duration-200 cursor-pointer ${
+                  isActive
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                {isActive && <span className="mr-1.5 text-primary/70">/</span>}
+                {item.label}
+              </a>
+            )
+          })}
+          <a
+            href={profile.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-3 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground transition-all duration-200 hover:shadow-glow-sm hover:brightness-110 cursor-pointer"
+          >
+            <FileDown size={16} />
+            Resume
+          </a>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t">
-            {navItems.map((item) => {
-              if (item.isHash) {
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className="block py-2 text-foreground hover:text-primary transition-colors duration-200 cursor-pointer"
-                    onClick={(e) => handleSmoothScroll(e, item.href)}
-                  >
-                    {item.label}
-                  </a>
-                )
-              } else {
-                return (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    className={`block py-2 text-foreground hover:text-primary transition-colors duration-200 ${
-                      location.pathname === item.href ? 'text-primary' : ''
-                    }`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                )
-              }
-            })}
-          </div>
-        )}
+        {/* Mobile Menu Button */}
+        <button
+          className="rounded-full p-2 text-foreground hover:bg-white/5 md:hidden cursor-pointer"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        >
+          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </nav>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="glass-card mx-auto mt-2 max-w-4xl rounded-3xl p-3 md:hidden">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="block rounded-2xl px-4 py-3 font-mono text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-primary cursor-pointer"
+              onClick={(e) => handleSmoothScroll(e, item.href)}
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href={profile.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 flex items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
+          >
+            <FileDown size={16} />
+            Download Resume
+          </a>
+        </div>
+      )}
     </header>
   )
 }
