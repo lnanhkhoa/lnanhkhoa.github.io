@@ -6,7 +6,7 @@ export const profile = {
   email: 'lnanhkhoa303@gmail.com',
   phone: '+84 39 996 4550',
   location: 'Ho Chi Minh City, Vietnam',
-  resumeUrl: '/khoale-senior-resume.pdf',
+  resumeUrl: '/2026-khoale-resume.pdf',
   github: 'https://github.com/lnanhkhoa/',
   linkedin: 'https://www.linkedin.com/in/lnanhkhoa/'
 }
