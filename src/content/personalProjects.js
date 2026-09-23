@@ -54,5 +54,32 @@ export const personalProjects = [
     githubUrl: null,
     status: 'In Development',
     year: '2025'
+  },
+  {
+    title: 'Theta Movies',
+    description:
+      'A Netflix-inspired streaming platform for discovering and watching movies and TV shows, with a cinematic dark theme and a fully responsive layout.',
+    technologies: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'TailwindCSS v4',
+      'Shadcn UI',
+      'Radix UI',
+      'Next Video',
+      'Vercel'
+    ],
+    keyFeatures: [
+      'Homepage hero banner with smooth, swipeable movie carousels',
+      'Detail pages for movies and TV shows, plus a built-in video player',
+      'Search and genre browsing to discover new titles',
+      'Curated collections and a personal "My List" watchlist',
+      'Google sign-in flow that gates personal features like the watchlist',
+      'Statically generated pages for fast loading, deployed on Vercel'
+    ],
+    liveUrl: 'https://theta-cinema.vercel.app/',
+    githubUrl: 'https://github.com/lnanhkhoa/movie-hub',
+    status: 'Live',
+    year: '2025'
   }
 ]
