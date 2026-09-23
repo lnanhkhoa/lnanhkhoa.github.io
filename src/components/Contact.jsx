@@ -55,7 +55,7 @@ const Contact = () => {
   return (
     <Section
       id="contact"
-      index="05"
+      index="06"
       title="Get in touch"
       className="pb-28 md:pb-36"
       description="Open to discussing roles and interesting problems — or just talking shop."

@@ -9,7 +9,7 @@ const navItems = [
   { href: '/#skills', label: 'skills' },
   { href: '/#experience', label: 'experience' },
   { href: '/#projects', label: 'work' },
-  // { href: '/#personal-projects', label: 'lab' },
+  { href: '/#personal-projects', label: 'lab' },
   { href: '/#contact', label: 'contact' }
 ]
 
