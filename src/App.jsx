@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import ScrollToTop from './components/ScrollToTop'
 const Home = React.lazy(() => import('./pages/Home'))
+const LabProject = React.lazy(() => import('./pages/LabProject'))
 // const Blog = React.lazy(() => import('./pages/Blog'));
 // const BlogPost = React.lazy(() => import('./pages/BlogPost'));
 
@@ -23,6 +24,7 @@ function App() {
         <React.Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/the-labs/:projectId" element={<LabProject />} />
             {/* <Route path="/blog" element={<Blog />} /> */}
             {/* <Route path="/blog/:id" element={<BlogPost />} /> */}
           </Routes>

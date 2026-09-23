@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Menu, X, FileDown } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { profile } from '../content/profile'
 
 // { href: '/blog', label: 'blog' } — re-add once blog pages are enabled
@@ -8,14 +8,15 @@ const navItems = [
   { href: '/#about', label: 'about' },
   { href: '/#skills', label: 'skills' },
   { href: '/#experience', label: 'experience' },
-  { href: '/#projects', label: 'work' },
   { href: '/#personal-projects', label: 'lab' },
+  { href: '/#projects', label: 'work' },
   { href: '/#contact', label: 'contact' }
 ]
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const navigate = useNavigate()
 
   // Scroll spy — highlight the section currently in view
   useEffect(() => {
@@ -40,8 +41,11 @@ const Header = () => {
     const element = document.getElementById(targetId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
-      setIsMenuOpen(false)
+    } else {
+      // Not on the home page (e.g. a lab detail page): route home, Home scrolls to the hash
+      navigate(href)
     }
+    setIsMenuOpen(false)
   }
 
   return (
