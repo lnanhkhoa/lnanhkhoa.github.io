@@ -20,7 +20,7 @@ const disabledLinkClass =
 
 // "live" and "code" pills; falls back to muted placeholders when a URL is missing.
 export const ProjectLinks = ({ liveUrl, githubUrl }) => (
-  <div className="flex shrink-0 gap-2">
+  <div className="flex shrink-0 flex-wrap gap-2">
     {liveUrl ? (
       <a
         href={liveUrl}

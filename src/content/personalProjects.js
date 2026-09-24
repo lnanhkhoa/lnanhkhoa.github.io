@@ -169,6 +169,81 @@ export const personalProjects = [
       { src: '/the-labs/nobita-house-3d/character-card.jpg', caption: 'Camera close on Doraemon with his info card open' },
       { src: '/the-labs/nobita-house-3d/character-studio.jpg', caption: 'Doraemon waving on the character studio turntable' }
     ]
+  },
+  {
+    id: 'nha-xe-phat-dat',
+    title: 'Nhà Xe Phát Đạt',
+    description:
+      'The booking website for a family-run limousine bus line on the TP. Hồ Chí Minh ⇄ La Gi route — schedule, fares, fleet showcase and a quick booking form with call-back confirmation.',
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Radix UI',
+      'next-intl'
+    ],
+    keyFeatures: [
+      'Fixed departure schedule with per-direction tabs — La Gi → HCMC and HCMC → La Gi — showing departure and arrival windows',
+      'Quick booking form: name, phone, direction, date, departure time, seat count and optional pickup point',
+      'Call-back confirmation flow — a dispatcher phones to confirm within 5 minutes',
+      'Fleet showcase with a swipeable gallery of the limousine interior',
+      'Route section explaining the two pickup models: fixed point in HCMC, door-to-door in La Gi',
+      'Vietnamese-first content with a language switcher, FAQ accordion and 24/7 hotline CTAs'
+    ],
+    liveUrl: 'https://nhaxephatdat.com/',
+    status: 'Live',
+    year: '2025',
+    overview: [
+      'Nhà Xe Phát Đạt is the public face of a real limousine bus business running daily between TP. Hồ Chí Minh and La Gi (Bình Thuận). Passengers land on a single-page site that answers the three questions that matter — when does the bus leave, how much is it, how do I book — without needing an account or a payment gateway.',
+      'The booking flow is deliberately low-friction: a form collects name, phone, direction, date, departure time, seats and an optional pickup address, then a dispatcher calls back to confirm. Pickup logic differs per direction — a fixed point at Vòng xoay Dân Chủ in HCMC versus door-to-door service around La Gi — and the site explains that clearly instead of hiding it in fine print.'
+    ],
+    highlights: [
+      {
+        title: 'Schedule-first design',
+        body: 'The timetable sits right under the hero: tabbed per direction, fixed daily departure slots with arrival windows, and a “Đặt ngay” button on every row that jumps straight into the booking form.'
+      },
+      {
+        title: 'Booking without friction',
+        body: 'No accounts, no payment step. Passengers pick a date, time and seat count, leave a phone number, and the office confirms by call — matching how the business actually operates.'
+      },
+      {
+        title: 'Direction-aware pickup',
+        body: 'HCMC departures use a fixed pickup point with optional Grab support; La Gi departures collect a full address for door-to-door pickup. The form and route section both surface this.'
+      },
+      {
+        title: 'Fleet showcase',
+        body: 'A swipeable gallery shows the leather-seat limousine interior — the product’s main selling point for a 2.5–3 hour ride.'
+      },
+      {
+        title: 'Trust signals',
+        body: 'A “why choose us” section covers safety, punctuality and amenities (WiFi, AC, water, insurance), followed by an FAQ accordion answering cancellation, luggage and payment questions.'
+      },
+      {
+        title: 'Localisation',
+        body: 'Vietnamese-first content served under locale-prefixed routes, with a language switcher in the footer.'
+      }
+    ],
+    stack: [
+      { layer: 'Framework', items: ['Next.js (App Router, Turbopack)', 'React', 'TypeScript'] },
+      { layer: 'UI', items: ['Tailwind CSS', 'Radix UI primitives', 'Lucide icons'] },
+      { layer: 'Content', items: ['Vietnamese-first copy', 'Locale-prefixed routing', 'FAQ accordion'] },
+      { layer: 'Contact', items: ['Hotline CTAs', 'Zalo deep links', 'Call-back booking form'] }
+    ],
+    sections: [
+      {
+        title: 'Why it exists',
+        body: 'A small bus line lives on phone calls. The site doesn’t try to replace the dispatcher — it makes the phone ring less for the wrong reasons: the schedule and fares are always visible, the booking form captures everything the dispatcher needs in one shot, and the FAQ absorbs the repeat questions.'
+      }
+    ],
+    screenshots: [
+      { src: '/the-labs/nha-xe-phat-dat/hero.jpg', caption: 'Hero — limousine positioning with hotline and booking CTAs' },
+      { src: '/the-labs/nha-xe-phat-dat/schedule.jpg', caption: 'Fixed daily departures, tabbed per direction, with per-row booking' },
+      { src: '/the-labs/nha-xe-phat-dat/booking.jpg', caption: 'Quick booking form — direction, date, time, seats and pickup point' },
+      { src: '/the-labs/nha-xe-phat-dat/fleet.jpg', caption: 'Fleet showcase — swipeable limousine interior gallery' },
+      { src: '/the-labs/nha-xe-phat-dat/route.jpg', caption: 'Route section — fixed pickup in HCMC, door-to-door in La Gi' },
+      { src: '/the-labs/nha-xe-phat-dat/why-us.jpg', caption: 'Why choose us — safety, punctuality and on-board amenities' }
+    ]
   }
 ]
 
